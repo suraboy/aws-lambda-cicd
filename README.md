@@ -1,4 +1,4 @@
-# Aws : Lambda CICD
+Aws : Lambda CICD
 ======
 
 NOTE
