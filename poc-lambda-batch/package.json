@@ -1,0 +1,38 @@
+{
+  "name": "lambda-batch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jirat Patthaveewatthanachot",
+  "license": "ISC",
+  "dependencies": {
+    "@fast-csv/format": "^4.3.1",
+    "@fast-csv/parse": "^4.3.1",
+    "aws-sdk": "^2.812.0",
+    "axios": "^0.19.2",
+    "convert-excel-to-json": "^1.7.0",
+    "dotenv": "^8.2.0",
+    "fast-csv": "^4.3.1",
+    "json2csv": "^5.0.1",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "openpgp": "^4.10.9",
+    "pad-left": "^2.1.0",
+    "path": "^0.12.7",
+    "pino": "^5.11.1",
+    "pino-pretty": "^2.5.0",
+    "repeat-string": "^1.6.1",
+    "sequelize": "^5.16.0",
+    "simple-backoff": "^1.1.0",
+    "ssh2-sftp-client": "^5.3.1",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^3.3.0"
+  }
+}
