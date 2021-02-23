@@ -21,9 +21,9 @@ module.exports.sysConfig = {
         sftp_port: process.env.SFTP_LMS_PORT ? parseInt(process.env.SFTP_LMSPORT) : 22,
         sftp_username: process.env.SFTP_LMS_USERNAME,
         sftp_password: process.env.SFTP_LMS_PASSWORD,
-        sftp_directory_readfile: process.env.SFTP_LMS_PATH_READFILE,
+        sftp_directory_read_file: process.env.SFTP_LMS_PATH_READ_FILE,
         sftp_directory_writefile: process.env.SFTP_LMS_PATH_WRITEFILE,
-        sftp_privatekey_directory: process.env.SFTP_LMS_PRIVATE_KEY,
+        sftp_private_key_directory: `${process.env.SFTP_LMS_PRIVATE_KEY}`,
     },
     masterDb: {
         mysql: {

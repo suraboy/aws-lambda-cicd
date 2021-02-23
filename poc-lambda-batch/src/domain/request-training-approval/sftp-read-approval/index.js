@@ -19,17 +19,16 @@ let sftpConn;
 async function getFileFromSFTP(){
     return new Promise(async (resolve, reject) => {
         try {
-            const {sftp_host, sftp_port, sftp_username, sftp_privatekey_directory, sftp_directory_readfile} = sFTPConfig;
+            const {sftp_host, sftp_port, sftp_username, sftp_private_key_directory, sftp_directory_read_file} = sFTPConfig;
             sftpConn = await sftpConnectionWithPrivateKey(
-                sftp_host, 
-                sftp_port, 
-                sftp_username, 
-                fs.readFileSync(sftp_privatekey_directory), 
-                sftp_directory_readfile 
+                sftp_host,
+                sftp_port,
+                sftp_username,
+                fs.readFileSync(sftp_private_key_directory),
+                sftp_directory_read_file
             );
 
-
-            const sftpFilesList = await sftpGetListFile(sftpConn, sftp_directory_readfile);
+            const sftpFilesList = await sftpGetListFile(sftpConn, sftp_directory_read_file);
             resolve(sftpFilesList);
         } catch (error){
             reject(error);
@@ -40,20 +39,23 @@ async function getFileFromSFTP(){
 async function storedFileToStorage(sftpFilesList){
     return new Promise(async (resolve, reject) => {
         try{
-            const {sftp_directory_readfile} = sFTPConfig;
+            const {sftp_directory_read_file} = sFTPConfig;
             let storedFilesList = [];
             await asyncForEach(sftpFilesList, async (sftpFileInfo) => {
                 if (sftpFileInfo) {
                     let FileName = sftpFileInfo.name;
-                    let sftpFilePath = `${sftp_directory_readfile}/${FileName}`;
-                    
+
+                    console.log(FileName)
+                    let sftpFilePath = `${sftp_directory_read_file}/${FileName}`;
+
                     // get file stream
                     let tempFileDSS = fs.createWriteStream(`/tmp/${FileName}`);
+
                     await sftpConn.get(sftpFilePath, tempFileDSS);
-        
+
                     let sftpDownloadDate = moment().tz('Asia/Bangkok').format('YYYY-MM-DD');
-                    let awsS3FilePath = `${awsConfig.S3.bucket}/LMSCourseRegistation/${sftpDownloadDate}`;  
-    
+                    let awsS3FilePath = `${awsConfig.S3.bucket}/LMSCourseRegistation/${sftpDownloadDate}`;
+
                     let tempStreamObject = fs.createReadStream(`/tmp/${FileName}`);
                     const fileUploadResult = await writeFileStreamToS3({ Bucket: awsS3FilePath, FileName, StreamObject: tempStreamObject});
 
@@ -82,20 +84,21 @@ module.exports.InitialService = async (filePath, FileName) => {
     return new Promise(async (resolve, reject) => {
         try{
             const sftpFilesList = await getFileFromSFTP();
+
             const storeFilesList = await storedFileToStorage(sftpFilesList);
 
             await asyncForEach(storeFilesList, async (storeFileInfo) => {
                 let storeFileName = storeFileInfo.FileName;
                 const storeFileStreamObj = await readFileStreamFromS3(storeFileInfo);
                 if (storeFileName.indexOf('.csv') > -1) {
-    
+
                 }
-    
+
                 if (storeFileName.indexOf('.xlsx') > -1) {
                     await SFTPReadRequestTrainingApproval(storeFileInfo.TempFilePath, storeFileName);
                 }
-    
-                await sftpConn.delete(storeFileInfo.SFTPFilePath);
+
+                // await sftpConn.delete(storeFileInfo.SFTPFilePath); #remove file on sftp
                 fs.unlinkSync(`${storeFileInfo.TempFilePath}${storeFileName}`);
             });
         } catch (error){
