@@ -13,6 +13,8 @@ jobs:
           node-version: '10.x'
       - name: Install Serverless Framework
         run: npm install -g serverless
+      - name: Install Plugin dotenv
+        run: npm install -g serverless-dotenv-plugin
       - name: Serverless AWS authentication
         run: sls config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
       - name: Create env file
