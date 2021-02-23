@@ -46,10 +46,6 @@ provider:
 #  exclude:
 #    - exclude-me.js
 #    - exclude-me-dir/**
-package:
-  exclude:
-    - node_modules/**
-    - venv/**
 
 functions:
   eod-sftp-readfile-request-training:
