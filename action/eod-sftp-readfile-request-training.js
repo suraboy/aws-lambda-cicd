@@ -4,6 +4,7 @@ const { RequestTrainingApproval } = require("../src/domain");
 
 async function readFileApproval(){
     try {
+        //release code
         const results = await RequestTrainingApproval.SFTPReadApproval.InitialService();
         // await mySQLMasterDb.initialize();
         console.log("Good Luck na ja! : " + results );

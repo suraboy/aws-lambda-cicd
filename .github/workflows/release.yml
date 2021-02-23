@@ -1,4 +1,4 @@
-name: Deploy Dev
+name: Deploy Release
 on:
   push:
     branches:
@@ -19,8 +19,8 @@ jobs:
         run: sls config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
       - name: Create env file
         run: |
-          cp development.env env
-          cat > env << EOF
+          cp .env.development .env
+          cat > .env << EOF
           ${{ secrets.ENV }}
           EOF
       - name: Install NPM dependencies
