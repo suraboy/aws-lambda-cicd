@@ -2,7 +2,7 @@ const EventEmitter = require('events');
 const ExponentialBackoff = require('simple-backoff').ExponentialBackoff;
 const Sequelize = require('sequelize');
 
-const logger = require('../../../logger');
+const logger = require('./../../../logger');
 
 const Op = Sequelize.Op;
 const operatorsAliases = {

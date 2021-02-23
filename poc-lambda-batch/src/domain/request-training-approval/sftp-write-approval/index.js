@@ -2,13 +2,13 @@ const _ = require('underscore');
 const fs = require("fs");
 const moment = require("moment-timezone");
 
-const logger = require('../../../../logger');
-const { sysConfig } = require("../../../../config");
-const { asyncForEach } = require("../../../utils");
-const masterdb = require("../../../db/sequelize/mysql");
+const logger = require('./../../../../logger');
+const { sysConfig } = require("./../../../../config");
+const { asyncForEach } = require("./../../../utils/index");
+const masterdb = require("./../../../db/sequelize/mysql");
 
-const { sftpConnectionWithPrivateKey, sftpGetListFile } = require("../../../utils/sftp");
-const { writeFileStreamToS3, readFileStreamFromS3 } = require("../../../utils/aws-eod");
+const { sftpConnectionWithPrivateKey, sftpGetListFile } = require("./../../../utils/sftp");
+const { writeFileStreamToS3, readFileStreamFromS3 } = require("./../../../utils/aws-eod");
 
 const sFTPConfig = sysConfig.sFTP;
 const awsConfig = sysConfig.aws;

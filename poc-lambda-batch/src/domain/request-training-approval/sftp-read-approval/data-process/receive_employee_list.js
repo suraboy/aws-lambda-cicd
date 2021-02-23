@@ -2,10 +2,10 @@ const fs = require("fs");
 const _ = require("underscore");
 const path = require("path");
 const moment = require("moment-timezone");
-const { sysConfig } = require("../../../../../config");
-const { asyncForEach } = require("../../../../utils");
-const { SendEmailWithSendGrid } = require("../../../notification/email");
-const masterdb = require("../../../../db/sequelize/mysql");
+const { sysConfig } = require("./../../../../../config");
+const { asyncForEach } = require("./../../../../utils/index");
+const { SendEmailWithSendGrid } = require("./../../../notification/email");
+const masterdb = require("./../../../../db/sequelize/mysql");
 
 const sendGridConfig = sysConfig.sendgrid;
 const { emailTemplate } = sendGridConfig;

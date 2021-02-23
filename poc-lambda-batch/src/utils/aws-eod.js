@@ -1,7 +1,7 @@
 const _ = require("underscore");
 const moment = require('moment-timezone');
 const AWS = require('aws-sdk');
-const { sysConfig } = require("../../config");
+const { sysConfig } = require("./../../config");
 
 const awsS3 = new AWS.S3();
 
