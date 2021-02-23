@@ -1,12 +1,13 @@
 'use strict';
-const mySQLMasterDb = require('./src/db/sequelize/mysql/index');
-const { RequestTrainingApproval } = require("./src/domain");
+const mySQLMasterDb = require('../src/db/sequelize/mysql');
+const { RequestTrainingApproval } = require("../src/domain");
 
 async function readFileApproval(){
     try {
+        console.log("Start:");
         await mySQLMasterDb.initialize();
         const results = await RequestTrainingApproval.SFTPReadApproval.InitialService();
-        console.log("Good Luck na ja! : " + results);
+        console.log("Good Luck na ja! : " + results );
         return {
             response: results
         }

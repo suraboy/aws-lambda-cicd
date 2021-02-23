@@ -54,33 +54,3 @@ module.exports.InitialService = async (filePath, FileName) => {
         }
     });
 }
-
-
-// approver_id: 5,
-// user_id: '10100346',
-// email: 'Ananya.T@ngerntidlor.com',
-// location: 'Head Office',
-// position: 'Supervisor Surprise Check Support',
-// title_th: 'นางสาว',
-// firstname_th: 'อนัญญา',
-// lastname_th: 'ทูลมาลา',
-// corporate_title: 'Supervisor/Branch Staff 3',
-// approver_date: 2021-02-16T12:41:14.000Z,
-// approver_status: 'APPROVAL',
-// class_code: 'MG_2421-003',
-// class_date: '2021-04-27',
-// class_name: 'Data Awareness',
-// class_registation_date: '2021-02-09',
-// class_type: 'Internal',
-// career_level_name: 'Sup. - Sr. Sup'
-
-
-{ useField: "user_id", firstKey: "A", secondKey: "User ID" },
-{ useField: "employee_name", firstKey: "B", secondKey: "Name" },
-{ useField: "class_name", firstKey: "C", secondKey: "Course Name" },
-{ useField: "class_id", firstKey: "D", secondKey: "Class ID" },
-{ useField: "class_date", firstKey: "E", secondKey: "Class Date" },
-{ useField: "class_type", firstKey: "F", secondKey: "Type" },
-{ useField: "application_date", firstKey: "G", secondKey: "Application Date" },
-{ useField: "approved_by", firstKey: "H", secondKey: "Approved By" },
-{ useField: "approved_on", firstKey: "I", secondKey: "Approved On" },

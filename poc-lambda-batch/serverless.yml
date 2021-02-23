@@ -1,4 +1,4 @@
-service: lambda-batch
+service: lambda-batch-poc
 frameworkVersion: '2'
 useDotenv: true
 plugins:
@@ -46,10 +46,14 @@ provider:
 #  exclude:
 #    - exclude-me.js
 #    - exclude-me-dir/**
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
 
 functions:
   eod-sftp-readfile-request-training:
-    handler: eod-sftp-readfile-request-training.index
+    handler: action/eod-sftp-readfile-request-training.index
     name: eod-sftp-readfile-request-training-${env:STAGE}
     description: "This function is used to retrieve employee information file from SFTP then this system will sending an email to manager for approve the training."
     memorySize: 4096
@@ -62,31 +66,31 @@ functions:
       Name: eod-sftp-readfile-request-training
       Project: TidlorTidrian
       Environment: ${env:ENVIROMENT}
-    events:
-      - schedule: 
-          name: eod-sftp-readfile-request-training-event-${env:STAGE}
-          description: 'your scheduled event for get file from sftp'
-          rate: cron(00 13 * * ? *)
+#    events:
+#      - schedule:
+#          name: eod-sftp-readfile-request-training-event-${env:STAGE}
+#          description: 'your scheduled event for get file from sftp'
+#          rate: cron(00 13 * * ? *)
           
-  eod-sftp-writefile-request-training:
-    handler: eod-sftp-writefile-request-training.index
-    name: eod-sftp-writefile-request-training-${env:STAGE}
-    description: "This function is used to write file employee information file from MainWeb when manager approved/reject all request training transaction"
-    memorySize: 4096
-    timeout: 900
-    disableLogs: false
-    environment:
-      SFTP_LMS_PATH_WRITEFILE: ${env:SFTP_LMS_PATH_WRITEFILE}
-      AWS_S3_BUCKET_REQUEST_TRAINING: ${env:AWS_S3_BUCKET_REQUEST_TRAINING}
-    tags:
-      Name: eod-sftp-writefile-request-training
-      Project: TidlorTidrian
-      Environment: ${env:ENVIROMENT}
-    events:
-      - schedule: 
-          name: eod-sftp-writefile-request-training-event-${env:STAGE}
-          description: 'your scheduled event for write file to sftp'
-          rate: cron(00 02 * * ? *)
+#  eod-sftp-writefile-request-training:
+#    handler: action/eod-sftp-writefile-request-training.index
+#    name: eod-sftp-writefile-request-training-${env:STAGE}
+#    description: "This function is used to write file employee information file from MainWeb when manager approved/reject all request training transaction"
+#    memorySize: 4096
+#    timeout: 900
+#    disableLogs: false
+#    environment:
+#      SFTP_LMS_PATH_WRITEFILE: ${env:SFTP_LMS_PATH_WRITEFILE}
+#      AWS_S3_BUCKET_REQUEST_TRAINING: ${env:AWS_S3_BUCKET_REQUEST_TRAINING}
+#    tags:
+#      Name: eod-sftp-writefile-request-training
+#      Project: TidlorTidrian
+#      Environment: ${env:ENVIROMENT}
+#    events:
+#      - schedule:
+#          name: eod-sftp-writefile-request-training-event-${env:STAGE}
+#          description: 'your scheduled event for write file to sftp'
+#          rate: cron(00 02 * * ? *)
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

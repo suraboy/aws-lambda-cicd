@@ -4,15 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm build",
+    "deploy": "npm run build && sls deploy --env development --state development",
+    "start-sls": "npm run build && sls offline start --env development --state development"
   },
-  "author": "Jirat Patthaveewatthanachot",
+  "author": "Sirichai Janpan",
   "license": "ISC",
   "dependencies": {
     "@fast-csv/format": "^4.3.1",
     "@fast-csv/parse": "^4.3.1",
+    "aws-cli": "0.0.2",
     "aws-sdk": "^2.812.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "convert-excel-to-json": "^1.7.0",
     "dotenv": "^8.2.0",
     "fast-csv": "^4.3.1",
@@ -28,11 +32,12 @@
     "pino-pretty": "^2.5.0",
     "repeat-string": "^1.6.1",
     "sequelize": "^5.16.0",
+    "serverless": "^2.25.2",
     "simple-backoff": "^1.1.0",
     "ssh2-sftp-client": "^5.3.1",
     "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "serverless-dotenv-plugin": "^3.3.0"
+    "serverless-dotenv-plugin": "^3.3.0",
   }
 }
