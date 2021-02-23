@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm build",
-    "deploy": "npm run build && sls deploy --env development --state development",
-    "start-sls": "npm run build && sls offline start --env development --state development"
+    "deploy": "npm run build && poc-lambda-batch/node_modules/.bin/sls deploy --env development --state development",
+    "start-sls": "npm run build && poc-lambda-batch/node_modules/.bin/sls offline start --env development --state development"
   },
   "author": "Sirichai Janpan",
   "license": "ISC",

@@ -5,12 +5,12 @@ const moment = require("moment-timezone");
 const dataSources = require('./data-source');
 const dataProcess = require('./data-process');
 
-const logger = require('./../../../../logger');
-const { sysConfig } = require("./../../../../config");
-const { asyncForEach } = require("./../../../utils/index");
+const logger = require('../../../../logger');
+const { sysConfig } = require("../../../../config");
+const { asyncForEach } = require("../../../utils");
 
-const { sftpConnectionWithPrivateKey, sftpGetListFile } = require("./../../../utils/sftp");
-const { writeFileStreamToS3, readFileStreamFromS3 } = require("./../../../utils/aws-eod");
+const { sftpConnectionWithPrivateKey, sftpGetListFile } = require("../../../utils/sftp");
+const { writeFileStreamToS3, readFileStreamFromS3 } = require("../../../utils/aws-eod");
 
 const sFTPConfig = sysConfig.sFTP;
 const awsConfig = sysConfig.aws;

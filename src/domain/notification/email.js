@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { sysConfig } = require("./../../../config");
+const { sysConfig } = require("../../../config");
 
 const sendGridConfig = sysConfig.sendgrid;
 

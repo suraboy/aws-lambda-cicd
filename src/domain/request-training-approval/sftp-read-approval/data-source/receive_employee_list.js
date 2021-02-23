@@ -2,9 +2,9 @@ const fs = require("fs");
 const _ = require("underscore");
 const path = require("path");
 
-const { readExcel } = require("./../../../../utils/file-excel");
-const { sysConfig } = require("./../../../../../config");
-const { asyncForEach } = require("./../../../../utils/index");
+const { readExcel } = require("../../../../utils/file-excel");
+const { sysConfig } = require("../../../../../config");
+const { asyncForEach } = require("../../../../utils");
 
 async function getRecordFromExcel(dirFile, fileName, tempSheetName, headerRows) {
     return new Promise(async (resolve, reject) => {

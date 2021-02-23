@@ -1,16 +1,10 @@
-workshop-p8/node_modules
-workshop-p8/.idea
-workshop-p8/.serverless
-workshop-p8/aws
-workshop-p8/awscli-bundle
-workshop-p8/*.zip
-
-poc-lambda-batch/node_modules
-poc-lambda-batch/.idea
-poc-lambda-batch/.serverless
-poc-lambda-batch/aws
-poc-lambda-batch/awscli-bundle
-poc-lambda-batch/*.zip
+node_modules
+.idea
+.serverless
+aws
+awscli-bundle
+*.zip
+key/*
 
 .idea/*
 package-lock.json
