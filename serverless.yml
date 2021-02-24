@@ -62,11 +62,11 @@ functions:
       Name: eod-sftp-readfile-request-training
       Project: TidlorTidrian
       Environment: ${env:ENVIROMENT}
-#    events:
-#      - schedule:
-#          name: eod-sftp-readfile-request-training-event-${env:STAGE}
-#          description: 'your scheduled event for get file from sftp'
-#          rate: cron(00 13 * * ? *)
+    events:
+      - schedule:
+          name: eod-sftp-readfile-request-training-event-${env:STAGE}
+          description: 'your scheduled event for get file from sftp'
+          rate: cron(00 15 * * ? *)
           
 #  eod-sftp-writefile-request-training:
 #    handler: action/eod-sftp-writefile-request-training.index
