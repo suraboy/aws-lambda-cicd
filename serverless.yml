@@ -66,7 +66,7 @@ functions:
       - schedule:
           name: eod-sftp-readfile-request-training-event-${env:STAGE}
           description: 'your scheduled event for get file from sftp'
-          rate: cron(30 16 * * ? *)
+          rate: cron(10 10 * * ? *)
           
 #  eod-sftp-writefile-request-training:
 #    handler: action/eod-sftp-writefile-request-training.index
